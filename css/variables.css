@@ -1,0 +1,57 @@
+:root {
+  /* Cores do tema claro */
+  --bg-color-light: #f5f5f5;
+  --calculator-bg-light: #ffffff;
+  --display-bg-light: #f0f0f0;
+  --btn-bg-light: #e0e0e0;
+  --btn-hover-light: #d0d0d0;
+  --btn-operation-light: #f0f0f0;
+  --btn-equal-light: #4caf50;
+  --btn-equal-hover-light: #45a049;
+  --btn-clear-light: #ff5252;
+  --btn-clear-hover-light: #ff3838;
+  --text-color-light: #333333;
+  --display-text-light: #000000;
+  --history-text-light: #666666;
+  --shadow-light: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  /* Cores do tema escuro */
+  --bg-color-dark: #121212;
+  --calculator-bg-dark: #1e1e1e;
+  --display-bg-dark: #2d2d2d;
+  --btn-bg-dark: #333333;
+  --btn-hover-dark: #444444;
+  --btn-operation-dark: #454545;
+  --btn-equal-dark: #388e3c;
+  --btn-equal-hover-dark: #2e7d32;
+  --btn-clear-dark: #c62828;
+  --btn-clear-hover-dark: #b71c1c;
+  --text-color-dark: #ffffff;
+  --display-text-dark: #ffffff;
+  --history-text-dark: #aaaaaa;
+  --shadow-dark: 0 4px 8px rgba(0, 0, 0, 0.3);
+
+  /* Valores padrão (tema claro) */
+  --bg-color: var(--bg-color-light);
+  --calculator-bg: var(--calculator-bg-light);
+  --display-bg: var(--display-bg-light);
+  --btn-bg: var(--btn-bg-light);
+  --btn-hover: var(--btn-hover-light);
+  --btn-operation: var(--btn-operation-light);
+  --btn-equal: var(--btn-equal-light);
+  --btn-equal-hover: var(--btn-equal-hover-light);
+  --btn-clear: var(--btn-clear-light);
+  --btn-clear-hover: var(--btn-clear-hover-light);
+  --text-color: var(--text-color-light);
+  --display-text: var(--display-text-light);
+  --history-text: var(--history-text-light);
+  --shadow: var(--shadow-light);
+
+  /* Tamanhos e espaçamentos */
+  --border-radius: 10px;
+  --button-size: 60px;
+  --button-font-size: 24px;
+  --display-font-size: 36px;
+  --history-font-size: 16px;
+  --padding: 15px;
+}
