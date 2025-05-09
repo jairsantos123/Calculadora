@@ -31,3 +31,13 @@ function formatNumber(number) {
 function isOperador(char) {
     return ["+", "-", "*", "/"].includes(char)
 }
+
+function getOperatorSymbol(operator) {
+    const symbols = {
+        "+": "+",
+        "-": "-",
+        "*": "x",
+        "/": "÷",
+    }
+    return symbols[operator] || operator
+}
