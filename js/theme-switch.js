@@ -4,12 +4,13 @@ class ThemeSwitcher {
         this.currentTheme = localStorage.getItem("theme") || "light"
 
         this.initTheme()
-        this.initEventListnres()
+        this.initEventListeners()
     }
 
     initTheme() {
         if (
-            this.currentTheme === "dark" || (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)"
+            this.currentTheme === "dark" || 
+            (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)"
         ).matches)
     ) {
             document.documentElement.setAttribute("data-theme", "dark")
@@ -23,12 +24,12 @@ class ThemeSwitcher {
         localStorage.setItem("theme", this.currentTheme)
     }
 
-    initEventListnres() {
-        this.ThemeToggle.addEventListener("click", () => {
+    initEventListeners() {
+        this.ThemeToggle.addEventListeners("click", () => {
             this.ToggleTheme()
 
         })
-    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListeners("change", (e) => {
         if (!localStorage.getItem("theme")) {
             this.currentTheme = e.matches ? "dark" : "light"
             this.initTheme()

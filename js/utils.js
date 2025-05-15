@@ -11,20 +11,20 @@ function formatNumber(number) {
     const maxDigits = 12
 
     if (Math.abs(number) >= 1e12) {
-        return number.toExponencial(6)
+        return number.toExponential(6)
     }
 
-    if (Number.isInteger(Number)) {
+    if (Number.isInteger(number)) {
         return numStr.toString()
     }
 
     const parts = numStr.split(".")
 
-    if (parts[0].lenght >= maxDigits) {
-        return number.toExponencial(6)
+    if (parts[0].length >= maxDigits) {
+        return number.toExponential(6)
     }
 
-    const decimalPlaces = Math.min (maxDigits - parts[0].lenght - 1, 10)
+    const decimalPlaces = Math.min (maxDigits - parts[0].length - 1, 10)
     return number.toFixed(decimalPlaces).replace(/\.?0+$/, "")
 }
 
