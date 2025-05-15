@@ -1,56 +1,53 @@
 class ThemeSwitcher {
-    constructor() {
-        this.ThemeToggle = document.getElementById("theme-toggle")
-        this.currentTheme = localStorage.getItem("theme") || "light"
+  constructor() {
+    this.themeToggle = document.getElementById("theme-toggle")
+    this.currentTheme = localStorage.getItem("theme") || "light"
 
-        this.initTheme()
-        this.initEventListeners()
-    }
+    this.initTheme()
+    this.initEventListeners()
+  }
 
-    initTheme() {
-        if (
-            this.currentTheme === "dark" || 
-            (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)"
-        ).matches)
+  initTheme() {
+    if (
+      this.currentTheme === "dark" ||
+      (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches)
     ) {
-            document.documentElement.setAttribute("data-theme", "dark")
-            this.currentTheme = "dark"
-        
-        } else {
-            document.documentElement.removeAttribute("data-theme")
-            this.currentTheme = "light"
-        }
-
-        localStorage.setItem("theme", this.currentTheme)
+      document.documentElement.setAttribute("data-theme", "dark")
+      this.currentTheme = "dark"
+    } else {
+      document.documentElement.removeAttribute("data-theme")
+      this.currentTheme = "light"
     }
 
-    initEventListeners() {
-        this.ThemeToggle.addEventListeners("click", () => {
-            this.ToggleTheme()
+    localStorage.setItem("theme", this.currentTheme)
+  }
 
-        })
-    window.matchMedia("(prefers-color-scheme: dark)").addEventListeners("change", (e) => {
-        if (!localStorage.getItem("theme")) {
-            this.currentTheme = e.matches ? "dark" : "light"
-            this.initTheme()
-        }
+  initEventListeners() {
+    this.themeToggle.addEventListener("click", () => {
+      this.toggleTheme()
     })
 
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
+      if (!localStorage.getItem("theme")) {
+        this.currentTheme = e.matches ? "dark" : "light"
+        this.initTheme()
+      }
+    })
+  }
+
+  toggleTheme() {
+    if (this.currentTheme === "light") {
+      document.documentElement.setAttribute("data-theme", "dark")
+      this.currentTheme = "dark"
+    } else {
+      document.documentElement.removeAttribute("data-theme")
+      this.currentTheme = "light"
     }
 
-    ToggleTheme() {
-        if (this.currentTheme === "light") {
-            document.documentElement.setAttribute("data-theme", "dark")
-            this.currentTheme = "dark"
-        } else {
-            document.documentElement.removeAttribute("data-theme")
-            this.currentTheme = "light"
-        }
-
-        localStorage.setItem("theme", this.currentTheme)
-    }
+    localStorage.setItem("theme", this.currentTheme)
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const themeSwitcher = new ThemeSwitcher()
+  const themeSwitcher = new ThemeSwitcher()
 })
