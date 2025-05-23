@@ -1,53 +1,34 @@
-class ThemeSwitcher {
-  constructor() {
-    this.themeToggle = document.getElementById("theme-toggle")
-    this.currentTheme = localStorage.getItem("theme") || "light"
+"use client"
 
-    this.initTheme()
-    this.initEventListeners()
-  }
+import { useEffect, useState } from "react"
 
-  initTheme() {
+function ThemeToggle() {
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light")
+
+  useEffect(() => {
     if (
-      this.currentTheme === "dark" ||
+      theme === "dark" ||
       (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches)
     ) {
       document.documentElement.setAttribute("data-theme", "dark")
-      this.currentTheme = "dark"
+      setTheme("dark")
     } else {
       document.documentElement.removeAttribute("data-theme")
-      this.currentTheme = "light"
+      setTheme("light")
     }
+    localStorage.setItem("theme", theme)
+  }, [theme])
 
-    localStorage.setItem("theme", this.currentTheme)
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "light" ? "dark" : "light"))
   }
 
-  initEventListeners() {
-    this.themeToggle.addEventListener("click", () => {
-      this.toggleTheme()
-    })
-
-    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
-      if (!localStorage.getItem("theme")) {
-        this.currentTheme = e.matches ? "dark" : "light"
-        this.initTheme()
-      }
-    })
-  }
-
-  toggleTheme() {
-    if (this.currentTheme === "light") {
-      document.documentElement.setAttribute("data-theme", "dark")
-      this.currentTheme = "dark"
-    } else {
-      document.documentElement.removeAttribute("data-theme")
-      this.currentTheme = "light"
-    }
-
-    localStorage.setItem("theme", this.currentTheme)
-  }
+  return (
+    <button id="theme-toggle" className="theme-toggle" aria-label="Alternar tema" onClick={toggleTheme}>
+      <span className="material-icons light-icon">light_mode</span>
+      <span className="material-icons dark-icon">dark_mode</span>
+    </button>
+  )
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const themeSwitcher = new ThemeSwitcher()
-})
+export default ThemeToggle

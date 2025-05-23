@@ -2,7 +2,7 @@
  * Lógica principal da calculadora
  */
 
-import { Display } from "./display.js"
+import { Display } from "./Display.jsx"
 import { getOperatorSymbol } from "./utils.js"
 import { formatNumber } from "./utils.js"
 
